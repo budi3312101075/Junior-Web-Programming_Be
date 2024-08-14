@@ -1,0 +1,65 @@
+POST http://localhost:5000/api/v1/register
+Content-Type: application/json
+
+{
+   "username": "budiprayoga",
+   "password": "budiprayoga",
+   "confpassword": "budiprayoga",
+   "kelas": "6A"
+}
+
+###
+POST http://localhost:5000/api/v1/login
+Content-Type: application/json
+
+{
+   "username": "budiprayoga",
+   "password": "budiprayoga"
+}
+
+### 
+GET http://localhost:5000/api/v1/logout
+
+### 
+GET http://localhost:5000/api/v1/ekskul
+
+
+###
+POST http://localhost:5000/api/v1/ekskul
+Content-Type: application/json
+
+{
+   "nama": "futsal",
+   "deskripsi": "latihann sini dekk sama abg",
+   "jadwal": "setiap senin dan kamis"
+}
+
+###
+PATCH http://localhost:5000/api/v1/ekskul/4696f829-83e0-4fcc-bde8-3e652d15c687
+Content-Type: application/json
+
+{
+   "nama": "futsal",
+   "deskripsi": "latihann sini dekk sama abg",
+   "jadwal": "setiap senin dan kamis"
+}
+
+
+###
+GET http://localhost:5000/api/v1/ekskul
+
+###
+GET http://localhost:5000/api/v1/pendaftaran
+
+###
+GET http://localhost:5000/api/v1/pendaftaran/a1d0ffca-934b-451e-aa91-0b5ea16e3a77
+
+###
+POST http://localhost:5000/api/v1/pendaftaran
+Content-Type: application/json
+
+{
+   "deskripsi": "karena saya rasa saya mampu dan saya memiliki potensi",
+   "status": "diajukan",
+   "id_ekskul": "d3a58be8-2a60-485f-96f7-1f252caa941f"
+}
