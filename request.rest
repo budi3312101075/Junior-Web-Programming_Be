@@ -13,8 +13,8 @@ POST http://localhost:5000/api/v1/login
 Content-Type: application/json
 
 {
-   "username": "budiprayoga",
-   "password": "budiprayoga"
+   "username": "admin",
+   "password": "admin"
 }
 
 ### 
@@ -48,11 +48,20 @@ Content-Type: application/json
 ###
 GET http://localhost:5000/api/v1/ekskul
 
+# Tampilkan Pendaftaran
 ###
 GET http://localhost:5000/api/v1/pendaftaran
 
+# Terima Pendaftaran
 ###
-GET http://localhost:5000/api/v1/pendaftaran/a1d0ffca-934b-451e-aa91-0b5ea16e3a77
+PATCH http://localhost:5000/api/v1/approve/553d19c0-4cf5-425d-9b5d-9125043c53c6
+
+# Tolak Pendaftaran
+###
+PATCH http://localhost:5000/api/v1/disApprove/553d19c0-4cf5-425d-9b5d-9125043c53c6
+
+###
+GET http://localhost:5000/api/v1/pendaftaran/d3a58be8-2a60-485f-96f7-1f252caa941f
 
 ###
 POST http://localhost:5000/api/v1/pendaftaran
@@ -60,6 +69,5 @@ Content-Type: application/json
 
 {
    "deskripsi": "karena saya rasa saya mampu dan saya memiliki potensi",
-   "status": "diajukan",
    "id_ekskul": "d3a58be8-2a60-485f-96f7-1f252caa941f"
 }
