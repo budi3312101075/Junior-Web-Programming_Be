@@ -2,9 +2,9 @@ POST http://localhost:5000/api/v1/register
 Content-Type: application/json
 
 {
-   "username": "budiprayoga",
-   "password": "budiprayoga",
-   "confpassword": "budiprayoga",
+   "username": "a",
+   "password": "a",
+   "confpassword": "a",
    "kelas": "6A"
 }
 
@@ -13,8 +13,8 @@ POST http://localhost:5000/api/v1/login
 Content-Type: application/json
 
 {
-   "username": "admin",
-   "password": "admin"
+   "username": "budiprayoga",
+   "password": "budiprayoga"
 }
 
 ### 
@@ -47,6 +47,17 @@ Content-Type: application/json
 
 ###
 GET http://localhost:5000/api/v1/ekskul
+
+###
+GET http://localhost:5000/api/v1/users
+
+
+###
+PATCH http://localhost:5000/api/v1/users/b594dea0-2623-44b3-9f30-be6af23570d9
+
+# riwayat pendaftaran
+###
+GET http://localhost:5000/api/v1/riwayatPendaftaran
 
 # Tampilkan Pendaftaran
 ###

@@ -123,3 +123,21 @@ export const disApprovePendaftaran = async (req, res) => {
     return res.status(400).json({ success: false, msg: error.message });
   }
 };
+
+export const riwayatPendaftaran = async (req, res) => {
+  const id_user = req.user.uuid;
+
+  try {
+    const data = await query(
+      `SELECT p.uuid, u.username, u.kelas, p.deskripsi,p.status, e.nama AS namaEkskul 
+      FROM pendaftaran p INNER JOIN 
+      users u on p.id_user = u.uuid INNER JOIN 
+      ekskul e on p.id_ekskul = e.uuid 
+      WHERE p.id_user = ?;`,
+      [id_user]
+    );
+    return res.status(200).json({ data: data });
+  } catch (error) {
+    return res.status(400).json({ success: false, msg: error });
+  }
+};
