@@ -30,12 +30,13 @@ export const register = async (req, res) => {
       const hashedPassword = await bcrypt.hash(password, salt);
 
       await query(
-        `INSERT INTO users (uuid, username, password, kelas, is_admin, is_deleted,created_at, updated_at) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+        `INSERT INTO users (uuid, username, password, photo, kelas, is_admin, is_deleted,created_at, updated_at) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
           uuid(),
           username,
           hashedPassword,
+          null,
           kelas,
           0,
           0,
@@ -72,7 +73,7 @@ export const login = async (req, res) => {
     }
 
     const user = await query(
-      `SELECT uuid, username, kelas, is_admin FROM users WHERE username = ?`,
+      `SELECT uuid, username, kelas, photo, is_admin FROM users WHERE username = ?`,
       [username]
     );
 
@@ -80,6 +81,7 @@ export const login = async (req, res) => {
       uuid: user[0].uuid,
       username: user[0].username,
       kelas: user[0].kelas,
+      photo: user[0].photo,
       is_admin: user[0].is_admin,
     };
     const token = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {

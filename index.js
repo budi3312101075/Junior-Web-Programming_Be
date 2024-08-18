@@ -6,6 +6,7 @@ import cluster from "node:cluster";
 import { availableParallelism } from "node:os";
 import cookieParser from "cookie-parser";
 import routes from "./routes/index.js";
+import { fileDir } from "./utils/file_handler.cjs";
 
 const totalCPU = availableParallelism();
 
@@ -32,6 +33,7 @@ function startExpress() {
     })
   );
 
+  app.use(express.static(fileDir()));
   app.use(cookieParser());
   app.use(express.json());
   app.use(routes);

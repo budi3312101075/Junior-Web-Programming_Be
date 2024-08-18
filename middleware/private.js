@@ -12,7 +12,7 @@ export const privateRoutes = async (req, res, next) => {
     const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
 
     const userDetail = await query(
-      `SELECT uuid, username, kelas, is_admin FROM users WHERE uuid = ?;`,
+      `SELECT uuid, username, kelas, photo, is_admin FROM users WHERE uuid = ?;`,
       [decoded.uuid]
     );
     req.user = userDetail[0];
