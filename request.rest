@@ -56,6 +56,10 @@ GET http://localhost:5000/api/v1/getMe
 
 
 ###
+PATCH http://localhost:5000/api/v1/statusEkskul/a1d0ffca-934b-451e-aa91-0b5ea16e3a77
+
+
+###
 PATCH http://localhost:5000/api/v1/users/b594dea0-2623-44b3-9f30-be6af23570d9
 
 # riwayat pendaftaran

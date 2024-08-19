@@ -68,3 +68,30 @@ export const deleteEkskul = async (req, res) => {
     return res.status(400).json({ success: false, msg: error.message });
   }
 };
+
+export const statusPendaftaran = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const [data] = await query(`SELECT status FROM ekskul WHERE uuid = ?;`, [
+      id,
+    ]);
+
+    if (data.status == "Open Recruitment") {
+      await query(
+        `UPDATE ekskul SET status = "Close Recruitment" WHERE uuid = ?;`,
+        [id]
+      );
+      return res.status(200).json("Ekskul berhasil di tutup");
+    } else if (data.status == "Close Recruitment") {
+      await query(
+        `UPDATE ekskul SET status = "Open Recruitment" WHERE uuid = ?;`,
+        [id]
+      );
+      return res.status(200).json("Ekskul berhasil di buka");
+    } else {
+      return res.status(200).json("Error tidak valid");
+    }
+  } catch (error) {
+    return res.status(400).json({ success: false, msg: error.message });
+  }
+};
