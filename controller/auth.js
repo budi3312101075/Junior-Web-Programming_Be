@@ -59,7 +59,7 @@ export const login = async (req, res) => {
     }
 
     const cekUser = await query(
-      `SELECT username, password FROM users WHERE username = ?`,
+      `SELECT username, password FROM users WHERE username = ? AND is_deleted = 0`,
       [username]
     );
 
